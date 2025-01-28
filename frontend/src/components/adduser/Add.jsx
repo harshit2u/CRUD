@@ -19,7 +19,7 @@ const Add = () =>     {
     }
     const submitForm=async(e)=>{
         e.preventDefault();
-        await axios.post("https://backend-yqi9.onrender.com/api/create",user)
+        await axios.post("https://backend-2598.onrender.com/api/create",user)
         .then((response)=>{
             toast.success(response.data.msg,{position:"top-right"})
             navigate("/")
