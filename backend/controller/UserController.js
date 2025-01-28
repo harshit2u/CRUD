@@ -50,20 +50,27 @@ export const update=async(req,res)=>{
         res.status(500).json({error:error})    }
 }
 
-export const deleteUser=async(req,res)=>{
-    try{
-        const id=req.params.id;
-        const userExist=await UserModel.findById(id);
-        if(!userExist){
-            return res.status(404).json({msg:"user not exist"})
+export const deleteUser = async (req, res) => {
+    try {
+        console.log("DELETE request received for ID:", req.params.id);
+
+        const id = req.params.id;
+        const userExist = await UserModel.findById(id);
+
+        if (!userExist) {
+            console.log("User not found with ID:", id);
+            return res.status(404).json({ msg: "User does not exist" });
         }
+
         await UserModel.findByIdAndDelete(id);
-        res.status(200).json({msg:"user deleted successfully"})
-         
+        console.log("User deleted successfully with ID:", id);
+        res.status(200).json({ msg: "User deleted successfully" });
+    } catch (error) {
+        console.error("Error in deleteUser function:", error);
+        res.status(500).json({ error });
     }
-    catch(error){
-        res.status(500).json({error:error});
-    }
-}
+};
+
+
 
 
