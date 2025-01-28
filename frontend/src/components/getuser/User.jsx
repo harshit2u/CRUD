@@ -9,7 +9,7 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://backend-yqi9.onrender.com/api/getall"
+        "https://backend-2598.onrender.com/api/getall"
       );
       setUsers(response.data);
     };
@@ -18,7 +18,7 @@ const User = () => {
 
   const deleteUser = async (userId) => {
     await axios
-      .delete(`https://backend-yqi9.onrender.com/api/delete/${userId}`)
+      .delete(`https://backend-2598.onrender.com/api/delete/${userId}`)
       .then((response) => {
         setUsers((prevUser) => prevUser.filter((user) => user._id !== userId));
       })
